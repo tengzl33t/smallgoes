@@ -1,10 +1,16 @@
 /*
-File: validator.go
-Description: TXCertbot 2.X compact Go format validator
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+SPDX-License-Identifier: MPL-2.0
+
+File: txc_validator.go
+Description: TXCertbot 2.X compact Go config validator
 Author: tengzl33t
 
 Better to compile with tinygo:
-GOTOOLCHAIN=go1.21.13 GOSUMDB='sum.golang.org' tinygo build -scheduler=none -panic=trap -gc=leaking ./txc_validator.go
+GOTOOLCHAIN=go1.21.6 GOSUMDB='sum.golang.org' tinygo build -scheduler=none -panic=trap -gc=leaking ./txc_validator.go
 */
 
 package main
