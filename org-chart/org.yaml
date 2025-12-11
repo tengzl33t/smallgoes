@@ -1,0 +1,68 @@
+groups:
+  SeriousPeople:
+    title: Serious People
+    positions: [ CEO, RMP, OMP ]
+  LessSeriousPeople:
+    title: Less Serious People
+    positions: [ CSG, CSecG, CSoftG ]
+  LeastSeriousPeople:
+    title: Least Serious People
+    positions: [ ]
+
+people:
+  CEO:
+    title: Renato Fleming
+    position: Founder & CEO
+  RMP:
+    title: Naomi Walls
+    position: Revenue Managing Partner
+  OMP:
+    title: Robbie Whitehead
+    position: Operation Managing Partner
+  CFO:
+    title: Aimee Clements
+    position: Chief Financial Officer
+  CPO:
+    title: Dorothea Mcgee
+    position: Chief People Officer
+  CTO:
+    title: Marcel Kim
+    position: Chief Transformation Officer
+  SOP:
+    title: Liza Howard
+    position: Strategic Offer Partner
+  GOP:
+    title: Conrad Cummings
+    position: Global Offer Partner
+  CSG:
+    title: Olive Forbes
+    position: Chief Serious Guy
+  CSecG:
+    title: Jorge Edwards
+    position: Chief Secutiry Guy
+  CSoftG:
+    title: Normand Knight
+    position: Chief Software Guy
+  NSG:
+    title:  Esmeralda French
+    position: Not Serious Guy
+  EFM:
+    title: Alyssa Figueroa
+    position: Efficient Manager
+  MEFM:
+    title: Carole Santos
+    position: More Efficient Manager
+  LEFM:
+    title: Ola Meadows
+    position: Less Efficient Manager
+
+
+relations:
+  - manager: SeriousPeople
+    report: [ CFO, CPO, CTO, SOP, GOP, LessSeriousPeople ]
+  - manager: LessSeriousPeople
+    report: [ NSG ]
+  - manager: CFO
+    report: [ EFM, MEFM, LEFM ]
+
+
