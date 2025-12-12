@@ -1,6 +1,6 @@
 module org-chart
 
-go 1.25.4
+go 1.24.11
 
 require (
 	github.com/goccy/go-graphviz v0.2.10

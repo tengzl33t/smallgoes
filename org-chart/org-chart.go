@@ -158,11 +158,11 @@ func createPeople(cfg Config, nodes map[string]*NodeInfo, graph *cgraph.Graph) {
 }
 
 func renderGraph(
-	g *graphviz.Graphviz,
+	gv *graphviz.Graphviz,
 	cfg Config,
 ) {
 	ctx := context.Background()
-	graph, err := g.Graph()
+	graph, err := gv.Graph()
 	if err != nil {
 		panic(err)
 	}
@@ -194,7 +194,7 @@ func renderGraph(
 		}
 	}(file)
 
-	if err := g.Render(ctx, graph, graphviz.SVG, file); err != nil {
+	if err := gv.Render(ctx, graph, graphviz.SVG, file); err != nil {
 		panic(err)
 	}
 	println("Graph rendered successfully to file.svg")
@@ -212,7 +212,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	graph, err := graphviz.New(ctx)
+	gv, err := graphviz.New(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -222,7 +222,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-	}(graph)
+	}(gv)
 
-	renderGraph(graph, cfg)
+	renderGraph(gv, cfg)
 }
