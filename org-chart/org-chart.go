@@ -84,6 +84,7 @@ func createEdges(cfg Config, nodes map[string]*NodeInfo, graph *cgraph.Graph) {
 			}
 
 			edge.SetColor("#666666")
+			edge.SetMinLen(2)
 		}
 	}
 }
@@ -165,7 +166,13 @@ func renderGraph(
 	if err != nil {
 		panic(err)
 	}
-	defer graph.Close()
+
+	defer func(graph *graphviz.Graph) {
+		err := graph.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(graph)
 
 	graph.SetRankDir("TB")
 	graph.SetCompound(true)
@@ -180,13 +187,13 @@ func renderGraph(
 	if err != nil {
 		panic(err)
 	}
-	defer func() {
-		if err := file.Close(); err != nil {
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
 			panic(err)
 		}
-	}()
+	}(file)
 
-	// Render SVG
 	if err := g.Render(ctx, graph, graphviz.SVG, file); err != nil {
 		panic(err)
 	}
@@ -194,7 +201,6 @@ func renderGraph(
 }
 
 func main() {
-	// Load config
 	data, err := os.ReadFile("org.yaml")
 	if err != nil {
 		panic(err)
@@ -206,11 +212,17 @@ func main() {
 	}
 
 	ctx := context.Background()
-	g, err := graphviz.New(ctx)
+	graph, err := graphviz.New(ctx)
 	if err != nil {
 		panic(err)
 	}
-	defer g.Close()
 
-	renderGraph(g, cfg)
+	defer func(g *graphviz.Graphviz) {
+		err := g.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(graph)
+
+	renderGraph(graph, cfg)
 }

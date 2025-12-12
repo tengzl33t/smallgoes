@@ -7,7 +7,7 @@ groups:
     positions: [ CSG, CSecG, CSoftG ]
   LeastSeriousPeople:
     title: Least Serious People
-    positions: [ ]
+    positions: [ ANSG, AOANSG ]
 
 people:
   CEO:
@@ -52,9 +52,12 @@ people:
   MEFM:
     title: Carole Santos
     position: More Efficient Manager
-  LEFM:
-    title: Ola Meadows
-    position: Less Efficient Manager
+  ANSG:
+    title: Gavin Singh
+    position: Absolutely Not Serious Guy
+  AOANSG:
+    title: Edison Berg
+    position: Another One Absolutely Not Serious Guy
 
 
 relations:
@@ -63,6 +66,8 @@ relations:
   - manager: LessSeriousPeople
     report: [ NSG ]
   - manager: CFO
-    report: [ EFM, MEFM, LEFM ]
+    report: [ EFM, MEFM ]
+  - manager: NSG
+    report: [ LeastSeriousPeople ]
 
 
